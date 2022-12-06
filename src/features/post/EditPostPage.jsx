@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Form, FormGroup, Input, Label, Button, Col } from "reactstrap";
 import { postUpdate, selectPostId } from './postSlice';
 import {Link} from "react-router-dom"
@@ -12,11 +12,14 @@ const EditPostPage = () => {
     const [content, setContent] = useState(selectPost.content)
     const isDisabled = [title, content].every(Boolean)
     const dispatch = useDispatch()
-
+    const navigate = useNavigate()
     const handleSubmit = (e) => {
         if (isDisabled) {
             dispatch(postUpdate({ id: postId, title, content }))
+            console.log(selectPost)
+            navigate('/')
         }
+
         e.preventDefault()
     }
     return (
@@ -31,8 +34,10 @@ const EditPostPage = () => {
                     <Input name='content' placeholder='Add content' aria-label='content' type='text' value={content} onChange={e => setContent(e.target.value)} />
                 </FormGroup>
                 <Button block color="primary" disabled={!isDisabled}>
-                    <Link to="/">Add</Link>
+                    Add
                 </Button>
+
+               
             </Form>
         </div>
     )

@@ -6,7 +6,7 @@ const PostAuthor = ({userId}) => {
     const author = useSelector(state => selectUserID(state,userId))
     return (
     <div>
-      <span>by {author ? author.name : 'Unknown author'}</span>
+      <span>by {author ? author.name : 'Unknown author'} </span>
     </div>
   )
 }

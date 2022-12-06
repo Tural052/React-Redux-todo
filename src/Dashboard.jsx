@@ -1,17 +1,17 @@
 import React from 'react'
-import { Row, Col } from 'reactstrap'
+import { Row, Col, Container } from 'reactstrap'
 import AddPost from './features/post/AddPost'
 import PostsList from './features/post/PostsList'
 const Dashboard = () => {
     return (
-        <Row>
-            <Col xs="6">
+        <Container className='p-4'>
+            <Col>
                 <AddPost />
             </Col>
             <Col>
                 <PostsList />
             </Col>
-        </Row>
+        </Container>
     )
 }
 
